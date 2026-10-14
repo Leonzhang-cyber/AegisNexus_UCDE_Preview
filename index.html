@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UCDE — Offline UI Preview</title><style>*{box-sizing:border-box}:root{font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;color:#0f172a;background:#eef6fa;color-scheme:light;line-height:1.5}body{margin:0}.sidebar{position:fixed;inset:0 auto 0 0;width:240px;background:white;border-right:1px solid #d7e3ec;padding:24px 16px;display:flex;flex-direction:column}.brand{padding:8px 8px 24px}.brand strong{font-size:19px}.brand small{display:block;color:#64748b;margin-top:6px}nav{display:grid;gap:10px}nav a{display:block;padding:12px 16px;color:#334155;text-decoration:none;border-radius:10px;border:1px solid transparent;font-weight:600}nav a:hover,nav a[aria-current]{background:#e7f6f4;border-color:#bdd2df;color:#0f766e}.sidebar-note{margin-top:auto;color:#64748b;font-size:13px;padding:8px}.shell{margin-left:240px}header{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 32px;border-bottom:1px solid #d7e3ec}h1{font-size:28px;line-height:1.2;margin:0}header p{margin:6px 0 0;color:#64748b;font-size:13px}main{padding:24px 32px;max-width:1440px;margin:auto}section{background:white;border:1px solid #d7e3ec;border-radius:14px;padding:24px;margin:20px 0;box-shadow:0 8px 18px rgba(15,23,42,.035);scroll-margin-top:20px}h2{font-size:20px;margin:0 0 14px}h3{font-size:17px;margin:0 0 10px}.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}.notice{background:#fff8e9;border:1px solid #e5c887;border-radius:10px;padding:14px 16px;color:#6d4d12;line-height:1.7}.note{color:#64748b;font-size:13px}.badge{padding:6px 10px;border:1px solid #d7e3ec;border-radius:999px;font-size:12px}.pass{background:#f0fdfa;color:#0f766e}.fail{background:#fff1f2;color:#a6213b;border-color:#e9bac4}.cards{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:0}.cards>li{background:#f7fafc;border:1px solid #d7e3ec;border-radius:10px;padding:16px}.cards h3{color:#0f766e}.cards p{margin-bottom:0;color:#475569}.queue-item{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:16px}.settings{display:flex;align-items:end;flex-wrap:wrap;gap:18px}label{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600}.check{flex-direction:row;align-items:center;padding:10px 0}select,input,textarea{font:inherit;padding:10px;max-width:100%;background:white;color:#0f172a;border:1px solid #9badbc;border-radius:8px}button{font:inherit;font-weight:600;min-height:40px;padding:10px 16px;border:1px solid #0f766e;background:#0f766e;color:white;border-radius:8px;cursor:pointer}button:hover{background:#08635c}button:disabled{opacity:.5;cursor:not-allowed}.secondary{color:#334155;background:white;border-color:#9badbc}.secondary:hover{background:#eef6fa}:focus-visible{outline:3px solid #2563eb;outline-offset:3px}.trace{list-style:none;padding:0}.trace>li{border-left:3px solid #0f766e;padding:16px;margin:16px 0;background:#f7fafc;border-radius:0 8px 8px 0;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}#issues,#error{color:#a6213b}dialog{width:min(580px,calc(100% - 32px));border:1px solid #bdd2df;border-radius:16px;padding:28px;color:#0f172a;max-height:90vh;overflow:auto}dialog::backdrop{background:rgba(15,23,42,.45)}dialog label{margin-top:16px}dt{font-weight:700;margin-top:12px}dd{margin:4px 0;color:#475569}.dialog-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:24px}p,dd{overflow-wrap:anywhere}[hidden]{display:none!important}@media(max-width:1000px){.cards{grid-template-columns:1fr}.sidebar{width:200px}.shell{margin-left:200px}}@media(max-width:640px){.sidebar{position:static;width:100%;padding:16px;border-right:0;border-bottom:1px solid #d7e3ec}.brand{padding:0 0 12px}nav{display:flex;flex-wrap:wrap;gap:4px}nav a{padding:8px;font-size:13px}.sidebar-note{display:none}.shell{margin-left:0}header{padding:20px;align-items:start;flex-direction:column}main{padding:16px}section{padding:18px}.queue-item{align-items:start;flex-direction:column}.dialog-actions{flex-direction:column-reverse}.settings>label,header label{max-width:100%}h1{font-size:25px}}
+</style></head>
+<body>
+<aside class="sidebar"><div class="brand"><strong>AegisNexus · UCDE</strong><small>Unified Cognitive Decision Engine</small></div><nav aria-label="Workspace navigation"><a href="#workspace" aria-current="page">Role workspace</a><a href="#queue">Decisions and actions</a><a href="#trace-section">Evidence and versions</a><a href="#settings">Observation settings</a><a href="#health-section">System status</a></nav><p class="sidebar-note">Offline UI preview<br>Synthetic data · No live execution</p></aside>
+<div class="shell"><header><div><h1 id="workspace-title">Role workspace</h1><p>Unified Cognitive Decision Engine</p></div><label>Preview role<select id="role"><option value="owner">Decision Owner</option><option value="approver">Approver</option><option value="executor">Execution Owner</option><option value="supervisor">Supervisor</option><option value="auditor">ESG / Auditor</option><option value="admin">System Administrator</option></select></label></header>
+<main>
+<p class="notice">Offline preview: no live service or network connection. Role selection previews information order only. All data is synthetic. Confirmation does not grant real approval or trigger execution. Human review is pending.</p>
+<section id="workspace" aria-labelledby="priority-title"><div class="section-head"><h2 id="priority-title">Priorities</h2><span class="badge">demo-tenant · Preview identity</span></div><p id="role-intro"></p><ol id="priorities" class="cards"></ol></section>
+<section id="queue" aria-labelledby="queue-title"><div class="section-head"><h2 id="queue-title">Current action</h2><span id="verdict" role="status">Loading…</span></div><p id="error" role="alert"></p><ol id="issues"></ol><div class="queue-item"><div><h3 id="decision-title">Loading decision</h3><p id="decision-context"></p><p id="action-boundary" class="note"></p></div><button id="authorize" type="button" hidden>Start authorization preview</button></div><p id="authorization-result" role="status">No authorization preview has started.</p></section>
+<section id="trace-section" aria-labelledby="trace-title"><h2 id="trace-title">Evidence and version trace</h2><p class="note">Inspect source records as needed. Contract validation does not establish evidence authenticity or tamper protection.</p><ol id="trace" class="trace"></ol></section>
+<section id="settings" aria-labelledby="settings-title"><h2 id="settings-title">Observation settings</h2><div class="settings"><label>Scenario<select id="scenario"><option value="human">Human decision</option><option value="ai">AI decision</option><option value="mixed">Mixed decision</option><option value="revision">Decision revision v2</option><option value="missing-evidence">Missing evidence (reject)</option><option value="cross-tenant">Cross-tenant trace (reject)</option><option value="approval-mismatch">Approval mismatch (reject)</option></select></label><label>Display timezone<select id="timezone"><option value="Asia/Singapore">Singapore UTC+8</option><option value="UTC">UTC</option></select></label><label class="check"><input type="checkbox" id="details">Show record details</label><button id="refresh" type="button">Refresh validation</button></div><p class="note">Refreshing or changing the role or scenario invalidates a pending authorization preview.</p></section>
+<section id="health-section" aria-labelledby="health-title"><h2 id="health-title">Platform console</h2><p id="health">Checking…</p><p id="empty"></p><ul id="modules"></ul></section>
+</main></div>
+<dialog id="authorization-dialog" aria-labelledby="authorization-title"><h2 id="authorization-title">Authorization review · Preview</h2><p id="authorization-summary"></p><dl><dt>Scope</dt><dd>Current synthetic sample only; no live execution system is called.</dd><dt>Impact and validity</dt><dd>No external side effects. Refreshing or changing the scenario or role invalidates this preview.</dd><dt>Assurance boundary</dt><dd>No authenticated identity, persistent approval or tamper-protected audit.</dd></dl><form id="authorization-form"><label>Reason for preview authorization<textarea id="reason" maxlength="500" required rows="3"></textarea></label><div class="dialog-actions"><button type="button" id="cancel-authorization" class="secondary" autofocus>Cancel</button><button type="submit">Continue to confirmation</button></div></form></dialog>
+<dialog id="confirmation-dialog" aria-labelledby="confirmation-title" aria-describedby="confirmation-summary"><h2 id="confirmation-title">Final confirmation · Preview</h2><p id="confirmation-summary"></p><p class="notice">This step does not approve a live decision or dispatch execution.</p><form id="confirmation-form"><label>Enter decision-1 to confirm the object<input id="confirm-id" autocomplete="off" required></label><div class="dialog-actions"><button type="button" id="cancel-confirmation" class="secondary" autofocus>Return to workspace</button><button type="submit" id="confirm-authorization" disabled>Confirm preview</button></div></form></dialog>
+<script>
+const previewSamples = {"human":{"scenario":"human","synthetic":true,"accepted":true,"issues":[],"records":[{"schemaVersion":1,"kind":"evidence","id":"evidence-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[],"data":{"source":"Synthetic test material, not real business evidence","digest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}},{"schemaVersion":1,"kind":"decision","id":"decision-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"evidence","id":"evidence-1","version":1}],"data":{"mode":"human","rationale":"Schedule a controlled check using sample evidence."}},{"schemaVersion":1,"kind":"approval","id":"approval-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":1}],"data":{"outcome":"approved","reason":"Contract review only; no real execution permission is granted."}},{"schemaVersion":1,"kind":"execution","id":"execution-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":1},{"kind":"approval","id":"approval-1","version":1}],"data":{"status":"succeeded","idempotencyKey":"fixture-execution-1"}},{"schemaVersion":1,"kind":"result","id":"result-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"execution","id":"execution-1","version":1}],"data":{"summary":"Synthetic execution receipt; no external side effects."}}],"humanReview":"pending","assurance":"structure-and-references-only"},"ai":{"scenario":"ai","synthetic":true,"accepted":true,"issues":[],"records":[{"schemaVersion":1,"kind":"evidence","id":"evidence-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[],"data":{"source":"Synthetic test material, not real business evidence","digest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}},{"schemaVersion":1,"kind":"decision","id":"decision-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"evidence","id":"evidence-1","version":1}],"data":{"mode":"ai","rationale":"Schedule a controlled check using sample evidence.","ai":{"provider":"fixture","model":"fixture-model","templateVersion":"1"}}},{"schemaVersion":1,"kind":"approval","id":"approval-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":1}],"data":{"outcome":"approved","reason":"Contract review only; no real execution permission is granted."}},{"schemaVersion":1,"kind":"execution","id":"execution-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":1},{"kind":"approval","id":"approval-1","version":1}],"data":{"status":"succeeded","idempotencyKey":"fixture-execution-1"}},{"schemaVersion":1,"kind":"result","id":"result-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"execution","id":"execution-1","version":1}],"data":{"summary":"Synthetic execution receipt; no external side effects."}}],"humanReview":"pending","assurance":"structure-and-references-only"},"mixed":{"scenario":"mixed","synthetic":true,"accepted":true,"issues":[],"records":[{"schemaVersion":1,"kind":"evidence","id":"evidence-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[],"data":{"source":"Synthetic test material, not real business evidence","digest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}},{"schemaVersion":1,"kind":"decision","id":"decision-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"evidence","id":"evidence-1","version":1}],"data":{"mode":"mixed","rationale":"Schedule a controlled check using sample evidence.","ai":{"provider":"fixture","model":"fixture-model","templateVersion":"1"}}},{"schemaVersion":1,"kind":"approval","id":"approval-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":1}],"data":{"outcome":"approved","reason":"Contract review only; no real execution permission is granted."}},{"schemaVersion":1,"kind":"execution","id":"execution-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":1},{"kind":"approval","id":"approval-1","version":1}],"data":{"status":"succeeded","idempotencyKey":"fixture-execution-1"}},{"schemaVersion":1,"kind":"result","id":"result-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"execution","id":"execution-1","version":1}],"data":{"summary":"Synthetic execution receipt; no external side effects."}}],"humanReview":"pending","assurance":"structure-and-references-only"},"revision":{"scenario":"revision","synthetic":true,"accepted":true,"issues":[],"records":[{"schemaVersion":1,"kind":"evidence","id":"evidence-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[],"data":{"source":"Synthetic test material, not real business evidence","digest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}},{"schemaVersion":1,"kind":"decision","id":"decision-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"evidence","id":"evidence-1","version":1}],"data":{"mode":"human","rationale":"Schedule a controlled check using sample evidence."}},{"schemaVersion":1,"kind":"decision","id":"decision-1","version":2,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"evidence","id":"evidence-1","version":1}],"data":{"mode":"human","rationale":"Version 2 preserves version 1."},"previous":{"kind":"decision","id":"decision-1","version":1}},{"schemaVersion":1,"kind":"approval","id":"approval-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":2}],"data":{"outcome":"approved","reason":"Contract review only; no real execution permission is granted."}},{"schemaVersion":1,"kind":"execution","id":"execution-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":2},{"kind":"approval","id":"approval-1","version":1}],"data":{"status":"succeeded","idempotencyKey":"fixture-execution-1"}},{"schemaVersion":1,"kind":"result","id":"result-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"execution","id":"execution-1","version":1}],"data":{"summary":"Synthetic execution receipt; no external side effects."}}],"humanReview":"pending","assurance":"structure-and-references-only"},"missing-evidence":{"scenario":"missing-evidence","synthetic":true,"accepted":false,"issues":[{"path":"decision:decision-1:1","message":"Missing exact reference evidence:evidence-1:1"}],"records":[{"schemaVersion":1,"kind":"decision","id":"decision-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"evidence","id":"evidence-1","version":1}],"data":{"mode":"human","rationale":"Schedule a controlled check using sample evidence."}},{"schemaVersion":1,"kind":"approval","id":"approval-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":1}],"data":{"outcome":"approved","reason":"Contract review only; no real execution permission is granted."}},{"schemaVersion":1,"kind":"execution","id":"execution-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":1},{"kind":"approval","id":"approval-1","version":1}],"data":{"status":"succeeded","idempotencyKey":"fixture-execution-1"}},{"schemaVersion":1,"kind":"result","id":"result-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"execution","id":"execution-1","version":1}],"data":{"summary":"Synthetic execution receipt; no external side effects."}}],"humanReview":"pending","assurance":"structure-and-references-only"},"cross-tenant":{"scenario":"cross-tenant","synthetic":true,"accepted":false,"issues":[{"path":"result:result-1:1","message":"Cross-tenant trace is prohibited"}],"records":[{"schemaVersion":1,"kind":"evidence","id":"evidence-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[],"data":{"source":"Synthetic test material, not real business evidence","digest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}},{"schemaVersion":1,"kind":"decision","id":"decision-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"evidence","id":"evidence-1","version":1}],"data":{"mode":"human","rationale":"Schedule a controlled check using sample evidence."}},{"schemaVersion":1,"kind":"approval","id":"approval-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":1}],"data":{"outcome":"approved","reason":"Contract review only; no real execution permission is granted."}},{"schemaVersion":1,"kind":"execution","id":"execution-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":1},{"kind":"approval","id":"approval-1","version":1}],"data":{"status":"succeeded","idempotencyKey":"fixture-execution-1"}},{"schemaVersion":1,"kind":"result","id":"result-1","version":1,"tenantId":"other-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"execution","id":"execution-1","version":1}],"data":{"summary":"Synthetic execution receipt; no external side effects."}}],"humanReview":"pending","assurance":"structure-and-references-only"},"approval-mismatch":{"scenario":"approval-mismatch","synthetic":true,"accepted":false,"issues":[{"path":"execution:execution-1:1","message":"Execution must use its approved decision version"}],"records":[{"schemaVersion":1,"kind":"evidence","id":"evidence-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[],"data":{"source":"Synthetic test material, not real business evidence","digest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}},{"schemaVersion":1,"kind":"decision","id":"decision-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"evidence","id":"evidence-1","version":1}],"data":{"mode":"human","rationale":"Schedule a controlled check using sample evidence."}},{"schemaVersion":1,"kind":"decision","id":"decision-1","version":2,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"evidence","id":"evidence-1","version":1}],"data":{"mode":"human","rationale":"Version 2 preserves version 1."},"previous":{"kind":"decision","id":"decision-1","version":1}},{"schemaVersion":1,"kind":"approval","id":"approval-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":1}],"data":{"outcome":"approved","reason":"Contract review only; no real execution permission is granted."}},{"schemaVersion":1,"kind":"execution","id":"execution-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"decision","id":"decision-1","version":2},{"kind":"approval","id":"approval-1","version":1}],"data":{"status":"succeeded","idempotencyKey":"fixture-execution-1"}},{"schemaVersion":1,"kind":"result","id":"result-1","version":1,"tenantId":"demo-tenant","actorId":"demo-reviewer","createdAt":"2026-10-14T00:00:00.000Z","references":[{"kind":"execution","id":"execution-1","version":1}],"data":{"summary":"Synthetic execution receipt; no external side effects."}}],"humanReview":"pending","assurance":"structure-and-references-only"}};
+async function previewFetch(path) {
+  const url = new URL(path, 'http://offline.invalid');
+  let body;
+  if (url.pathname === '/api/observations') body = previewSamples[url.searchParams.get('scenario') || 'human'];
+  else if (url.pathname === '/api/modules') body = { modules: [] };
+  else if (url.pathname === '/health/ready') body = { status: 'preview-only' };
+  else throw new Error('Offline preview does not support this request');
+  if (!body) return new Response('{}', { status: 400 });
+  return new Response(JSON.stringify(body), { status: 200, headers: { 'Content-Type': 'application/json' } });
+}
+
+const button = document.querySelector('#refresh');
+const scenario = document.querySelector('#scenario');
+const timezone = document.querySelector('#timezone');
+const details = document.querySelector('#details');
+let observation;
+let requestId = 0;
+const names = { evidence: 'Evidence', decision: 'Decision', approval: 'Approval', execution: 'Execution', result: 'Result' };
+function render() {
+  if (!observation) return;
+  const verdict = document.querySelector('#verdict');
+  verdict.textContent = observation.accepted ? 'Contract valid · Human review pending' : 'Contract rejected';
+  verdict.className = observation.accepted ? 'badge pass' : 'badge fail';
+  document.querySelector('#issues').replaceChildren(...observation.issues.map(issue => {
+    const li = document.createElement('li'); li.textContent = `${issue.path}: ${issue.message}`; return li;
+  }));
+  document.querySelector('#trace').replaceChildren(...observation.records.map(record => {
+    const li = document.createElement('li');
+    const title = document.createElement('h3'); title.textContent = `${names[record.kind]} · ${record.id} · v${record.version}`;
+    const metadata = document.createElement('p'); metadata.className = 'note';
+    metadata.textContent = `${record.tenantId} / ${record.actorId} / ${new Intl.DateTimeFormat('en-GB', { timeZone: timezone.value, dateStyle: 'medium', timeStyle: 'long' }).format(new Date(record.createdAt))}`;
+    const references = document.createElement('p');
+    references.textContent = record.references.length ? `References: ${record.references.map(ref => `${names[ref.kind]} ${ref.id}@v${ref.version}`).join('; ')}` : 'Evidence chain origin';
+    li.append(title, metadata, references);
+    if (record.previous) { const previous = document.createElement('p'); previous.textContent = `Previous version: ${record.previous.id}@v${record.previous.version}`; li.append(previous); }
+    if (details.checked) { const pre = document.createElement('pre'); pre.textContent = JSON.stringify(record.data, null, 2); li.append(pre); }
+    return li;
+  }));
+}
+async function refresh() {
+  cancelAuthorization("Data refreshed. The pending preview is invalid.");
+  const current = ++requestId;
+  button.disabled = true;
+  observation = undefined;
+  document.querySelector('#trace').replaceChildren(); document.querySelector('#issues').replaceChildren();
+  document.querySelector('#verdict').textContent = 'Validating…'; document.querySelector('#verdict').className = '';
+  document.querySelector('#error').textContent = '';
+  renderWorkspace();
+  try {
+    const response = await previewFetch('/api/observations?scenario=' + encodeURIComponent(scenario.value));
+    if (!response.ok) throw new Error('Observation unavailable');
+    const data = await response.json();
+    if (current !== requestId) return;
+    observation = data; render(); renderWorkspace();
+  } catch {
+    if (current !== requestId) return;
+    document.querySelector('#verdict').textContent = 'Validation unavailable';
+    document.querySelector('#error').textContent = 'Observation data is unavailable. Refresh to retry. Validation has not been confirmed.';
+  } finally { if (current === requestId) button.disabled = false; }
+}
+async function health() {
+  try {
+    const [response, modules] = await Promise.all([previewFetch('/health/ready'), previewFetch('/api/modules')]);
+    if (!modules.ok) throw new Error('Module request failed');
+    const healthData = await response.json();
+    document.querySelector('#health').textContent = healthData.status === 'preview-only' ? 'Offline preview · No live service' : response.ok ? 'Platform ready' : 'Platform degraded';
+    const data = await modules.json();
+    document.querySelector('#modules').replaceChildren(...data.modules.map(module => { const li = document.createElement('li'); li.textContent = `${module.name} · ${module.state}`; return li; }));
+    document.querySelector('#empty').textContent = data.modules.length ? '' : 'No external business modules are registered.';
+  } catch { document.querySelector('#health').textContent = 'Platform status is unavailable.'; }
+  renderWorkspace();
+}
+button.addEventListener('click', () => { void refresh(); void health(); });
+scenario.addEventListener('change', refresh);
+timezone.addEventListener('change', render);
+details.addEventListener('change', render);
+
+
+const role = document.querySelector('#role');
+const authorize = document.querySelector('#authorize');
+const authorizationDialog = document.querySelector('#authorization-dialog');
+const confirmationDialog = document.querySelector('#confirmation-dialog');
+let pendingAuthorization;
+const profiles = {
+  owner: { name: 'Decision Owner', order: [['Pending decisions','Review goals and decision status before choosing an action.'],['Evidence gaps','Inspect missing or conflicting evidence before submitting.'],['Options and revisions','Compare options and changes before submitting for independent approval.']] },
+  approver: { name: 'Approver', order: [['Approval queue and risk','Check impact, deadlines and conflicts of responsibility first.'],['Evidence and version changes','Review exact evidence versions, options and changes next.'],['Authorization scope','Verify the object, scope and reason before final confirmation.']] },
+  executor: { name: 'Execution Owner', order: [['Authorized tasks','Review task status and blockers. Sample status is not real authorization.'],['Pre-execution checks','Check the exact decision version, approval and evidence status.'],['Results and exceptions','Inspect receipts, unknown outcomes and handover needs.']] },
+  supervisor: { name: 'Supervisor', order: [['Risks and exceptions','Review overdue work, blockers and deviations first.'],['Ownership and impact','Review ownership and impact next.'],['Review and escalation','Inspect provenance and arrange review. This role does not grant approval rights.']] },
+  auditor: { name: 'ESG / Auditor', order: [['Verification coverage and gaps','Check verification scope and missing material. Tamper verification is not implemented.'],['Evidence to outcome','Inspect versions, approvals, execution and accountability.'],['Methods and audit packages','Review methodology and export needs. Audit export is not implemented.']] },
+  admin: { name: 'System Administrator', order: [['Service health','Check availability and startup failures first.'],['Technical assurance boundary','Review audit, queue and anchoring readiness. These capabilities are not implemented.'],['Configuration and maintenance','Plan integrations and maintenance. Administration does not grant business authorization.']] }
+};
+function cancelAuthorization(message = 'Authorization preview cancelled. No live execution occurred.') {
+  const hadPending = !!pendingAuthorization;
+  pendingAuthorization = undefined;
+  authorizationDialog.close(); confirmationDialog.close();
+  document.querySelector('#authorization-result').textContent = hadPending ? message : 'No authorization preview has started for this context.';
+}
+function currentDecision() { return observation?.records.filter(r => r.kind === 'decision').sort((a,b) => b.version-a.version)[0]; }
+function renderWorkspace() {
+  const profile = profiles[role.value];
+  document.querySelector('#workspace-title').textContent = profile.name + ' Workspace';
+  document.querySelector('#role-intro').textContent = 'Role-specific order: action needs → supporting evidence → next steps. All records are synthetic.';
+  const records = observation?.records ?? [];
+  const decisionCount = new Set(records.filter(r => r.kind === 'decision').map(r => r.id)).size;
+  const evidenceCount = records.filter(r => r.kind === 'evidence').length;
+  const status = observation ? (observation.accepted ? 'Structure valid' : 'Structure rejected') : 'Data unavailable';
+  const values = {
+    owner: [`${decisionCount} decisions (synthetic)`, `${evidenceCount} evidence versions · Quality not assessed`, `${records.filter(r => r.kind === 'decision').length} decision versions`],
+    approver: ['Risk not assessed · Not a live approval queue', status, 'Current object interaction preview only'],
+    executor: [`${records.filter(r => r.kind === 'execution').length} execution samples`, status, records.find(r => r.kind === 'execution')?.data.status ?? 'Status unknown'],
+    supervisor: ['Risk assessment is not implemented', `${decisionCount} decisions (synthetic)`, 'No live review or escalation'],
+    auditor: [status + ' · No independent anchor', `${records.length} version records (synthetic)`, 'Audit export is not implemented'],
+    admin: [document.querySelector('#health').textContent, 'Audit / outbox / signing not connected', 'Display settings only']
+  };
+  document.querySelector('#priorities').replaceChildren(...profile.order.map(([title,text],i) => {
+    const li = document.createElement('li'); const h = document.createElement('h3'); h.textContent = `${i+1}. ${title}`;
+    const value = document.createElement('strong'); value.textContent = observation || role.value === 'admin' ? values[role.value][i] : 'Data unavailable';
+    const p = document.createElement('p'); p.textContent = text; li.append(h,value,p); return li;
+  }));
+  const decision = currentDecision();
+  document.querySelector('#decision-title').textContent = decision ? `${decision.id} · v${decision.version} · ${decision.data.mode}` : 'Decision data unavailable';
+  document.querySelector('#decision-context').textContent = decision ? decision.data.rationale : 'No valid records loaded. Authorization preview is unavailable.';
+  const canDemonstrate = ['approver','executor'].includes(role.value);
+  authorize.hidden = !canDemonstrate;
+  authorize.disabled = !observation?.accepted || !decision;
+  authorize.textContent = role.value === 'approver' ? 'Preview version approval' : 'Preview execution authorization';
+  document.querySelector('#action-boundary').textContent = canDemonstrate ? 'Interaction preview only. Server-side identity, permissions and authorization are not implemented.' : 'This preview role offers no approval or execution action. Role selection is not security authorization.';
+}
+role.addEventListener('change', () => { cancelAuthorization('Role changed. The pending authorization preview is invalid.'); renderWorkspace(); });
+authorize.addEventListener('click', () => {
+  const decision = currentDecision();
+  if (!decision || !observation?.accepted || !['approver','executor'].includes(role.value)) return;
+  const action = role.value === 'approver' ? 'approve this version' : 'authorize execution';
+  pendingAuthorization = { role: role.value, scenario: scenario.value, version: decision.version, action };
+  document.querySelector('#reason').value = '';
+  document.querySelector('#authorization-summary').textContent = `${profiles[role.value].name} · ${decision.tenantId} · ${decision.id}@v${decision.version} · ${action}`;
+  authorizationDialog.showModal();
+});
+document.querySelector('#authorization-form').addEventListener('submit', event => {
+  event.preventDefault();
+  const reason = document.querySelector('#reason').value.trim();
+  if (!pendingAuthorization || !reason) { document.querySelector('#reason').focus(); return; }
+  pendingAuthorization.reason = reason;
+  authorizationDialog.close();
+  document.querySelector('#confirmation-summary').textContent = `Preview action: ${pendingAuthorization.action} decision-1@v${pendingAuthorization.version}. Reason: ${reason}`;
+  document.querySelector('#confirm-id').value = '';
+  document.querySelector('#confirm-authorization').disabled = true;
+  confirmationDialog.showModal();
+});
+document.querySelector('#confirm-id').addEventListener('input', event => { document.querySelector('#confirm-authorization').disabled = event.target.value !== 'decision-1'; });
+document.querySelector('#confirmation-form').addEventListener('submit', event => {
+  event.preventDefault();
+  if (!pendingAuthorization || document.querySelector('#confirm-id').value !== 'decision-1') return;
+  const decision = currentDecision();
+  if (!observation?.accepted || pendingAuthorization.role !== role.value || pendingAuthorization.scenario !== scenario.value || pendingAuthorization.version !== decision?.version) { cancelAuthorization('Context changed. Review the current version again.'); return; }
+  const message = `${pendingAuthorization.action} preview completed · decision-1@v${decision.version}. No live approval, audit write or execution dispatch occurred.`;
+  pendingAuthorization = undefined; confirmationDialog.close();
+  document.querySelector('#authorization-result').textContent = message;
+});
+for (const id of ['cancel-authorization','cancel-confirmation']) document.querySelector('#'+id).addEventListener('click', () => cancelAuthorization());
+for (const dialog of [authorizationDialog,confirmationDialog]) dialog.addEventListener('cancel', event => { event.preventDefault(); cancelAuthorization(); });
+renderWorkspace();
+
+void refresh(); void health();
+</script></body></html>
