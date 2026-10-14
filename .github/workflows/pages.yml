@@ -78,6 +78,13 @@ jobs:
             }
             await page.selectOption('#scenario', 'revision');
             await verdict.filter({ hasText: 'Contract valid' }).waitFor();
+            assert.equal(await page.locator('#lifecycle .stage-node').count(), 5);
+            assert.ok(await page.locator('nav svg').count() >= 5);
+            assert.equal(await page.locator('#record-total').textContent(), '6');
+            assert.match(await page.locator('#composition').getAttribute('aria-label'), /Decision 2/);
+            await page.locator('[data-kind=decision]').click();
+            assert.match(await page.locator('#inspector-context').textContent(), /decision-1@v2/);
+            await page.click('#close-inspector');
             await page.selectOption('#role', 'approver');
             await page.click('#authorize');
             await page.keyboard.press('Escape');
@@ -96,7 +103,7 @@ jobs:
             assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true);
             await page.screenshot({ path: '/tmp/ucde-hosted-evidence/mobile.png', fullPage: true });
             assert.deepEqual(errors, []); assert.deepEqual(writes, []);
-            console.log('::notice::Hosted preview verified: HTTP 200, exact HTML SHA-256 ' + createHash('sha256').update(expected).digest('hex') + ', English, 6 roles, 7 scenarios, two-step confirmation, cancel, mobile layout, no live write requests. URL: ' + url);
+            console.log('::notice::Hosted preview verified: HTTP 200, exact HTML SHA-256 ' + createHash('sha256').update(expected).digest('hex') + ', English, 6 roles, 7 scenarios, two-step confirmation, cancel, mobile layout, library icons, lifecycle inspector, record composition, no live write requests. URL: ' + url);
           } finally { await browser.close(); }
           JS
       - uses: actions/upload-artifact@v4
